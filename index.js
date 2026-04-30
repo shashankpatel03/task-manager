@@ -7,6 +7,7 @@ const projectRoutes = require("./routes/projects");
 const taskRoutes = require("./routes/tasks");
 
 const app = express();
+
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
@@ -26,8 +27,8 @@ mongoose
   .then(() => console.log("DB connected"))
   .catch((err) => console.log(err));
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8080;
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log("Server running on port " + PORT);
 });
